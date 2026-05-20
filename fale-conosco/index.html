@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Befoctor · Fale conosco</title>
+    <meta
+      name="description"
+      content="Produtora de vídeos corporativos e clipes. Entre em contato para orçamentos, dúvidas ou parcerias."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --primary: #b46ad9;
+        --primary-light: #d28cff;
+        --secondary: #ea9154;
+        --bg-dark: #020617;
+        --bg-card: #0f172a;
+        --text: #ffffff;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.08);
+        --gradient: linear-gradient(135deg, #b46ad9, #ea9154);
+        --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
+        --radius-lg: 24px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-dark);
+        color: var(--text);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.2s;
+      }
+      ul {
+        list-style: none;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .logo {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+      }
+      .container {
+        max-width: 1280px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* HEADER (glass morph) */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(2, 6, 23, 0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      .nav-menu a {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        color: var(--primary-light);
+      }
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        border: 1px solid rgba(180, 106, 217, 0.28);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        place-items: center;
+        flex-shrink: 0;
+        z-index: 1001;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .mobile-toggle span {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .mobile-toggle span:nth-child(1) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(2) {
+        background: #c77ee8;
+      }
+      .mobile-toggle span:nth-child(3) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(4) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(5) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(6) {
+        background: #a855f7;
+      }
+      .mobile-toggle span:nth-child(7) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(8) {
+        background: #9d4edd;
+      }
+      .mobile-toggle span:nth-child(9) {
+        background: #8b5cf6;
+      }
+
+      .mobile-toggle.active {
+        border-color: rgba(180, 106, 217, 0.55);
+        transform: scale(0.96);
+      }
+
+      .mobile-toggle.active span {
+        transform: scale(0.82);
+        opacity: 0.7;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .nav-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* CONTACT SECTION */
+      .contact-hero {
+        padding-top: 130px;
+        padding-bottom: 60px;
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgba(180, 106, 217, 0.08),
+          transparent 60%
+        );
+      }
+      .section-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #fff, var(--primary-light));
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .section-sub {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin-bottom: 48px;
+        font-size: 1.1rem;
+      }
+      .grid-2cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+      .info-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px;
+        margin-bottom: 32px;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 28px;
+      }
+      .contact-item .icon {
+        width: 52px;
+        height: 52px;
+        background: rgba(180, 106, 217, 0.12);
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.7rem;
+        color: var(--primary-light);
+      }
+      .contact-item .details h3 {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+      .contact-item .details p,
+      .contact-item .details a {
+        color: var(--text-muted);
+      }
+      .contact-item .details a:hover {
+        color: var(--primary-light);
+      }
+
+      .map-wrapper {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        height: 320px;
+      }
+      .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .form-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px 30px;
+      }
+      .form-card h3 {
+        font-size: 1.9rem;
+        margin-bottom: 8px;
+      }
+      .form-card p {
+        color: var(--text-muted);
+        margin-bottom: 28px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 14px 18px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.95rem;
+        color: var(--text);
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(180, 106, 217, 0.2);
+      }
+      label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-muted);
+      }
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .checkbox-group input {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+      }
+      .checkbox-group label {
+        margin: 0;
+      }
+      .btn-submit {
+        background: var(--gradient);
+        border: none;
+        padding: 14px 28px;
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+        border-radius: 40px;
+        cursor: pointer;
+        width: 100%;
+        font-family: "Sora", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: 0.3s;
+      }
+      .btn-submit:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 18px rgba(180, 106, 217, 0.4);
+      }
+      .toast-msg {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: #0f172a;
+        backdrop-filter: blur(12px);
+        padding: 12px 28px;
+        border-radius: 80px;
+        border-left: 4px solid var(--primary);
+        color: white;
+        font-weight: 500;
+        z-index: 2000;
+        transition: transform 0.3s ease;
+        box-shadow: var(--shadow-sm);
+        pointer-events: none;
+      }
+      .toast-msg.show {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* FOOTER */
+      .footer {
+        background: #030712;
+        border-top: 1px solid var(--border);
+        padding: 56px 0 32px;
+        margin-top: 80px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      .footer-col .logo {
+        font-size: 1.8rem;
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      .footer-col p {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+      .footer-col h4 {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-links a {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .footer-links a:hover {
+        color: var(--primary-light);
+        padding-left: 4px;
+      }
+      .social-icons {
+        display: flex;
+        gap: 18px;
+        margin-top: 10px;
+      }
+      .social-icons a {
+        background: rgba(255, 255, 255, 0.03);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        font-size: 1.3rem;
+        border: 1px solid var(--border);
+      }
+      .social-icons a:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+      .copyright {
+        text-align: center;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 1024px) {
+        .grid-2cols {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .mobile-toggle {
+          display: grid;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: min(320px, 85vw);
+          height: 100vh;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          padding: 100px 32px 40px;
+          background: rgba(5, 8, 22, 0.98);
+          backdrop-filter: blur(20px);
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 1000;
+          transition: right 0.35s ease;
+          overflow-y: auto;
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu li {
+          width: 100%;
+        }
+
+        .nav-menu li a {
+          width: 100%;
+          padding: 16px 0;
+          font-size: 14px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          display: block;
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .section-title {
+          font-size: 2.3rem;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="navbar">
+          <div class="logo">BEFOCTOR</div>
+          <button
+            type="button"
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../quem-somos/index.html">Quem somos</a></li>
+            <li><a href="../index.html#servicos">Serviços</a></li>
+            <li><a href="../index.html#jobs">Jobs</a></li>
+            <li><a href="index.html" class="active">Fale conosco</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <button
+      type="button"
+      class="nav-overlay"
+      id="navOverlay"
+      aria-label="Fechar menu"
+    ></button>
+
+
+    <main>
+      <section class="contact-hero">
+        <div class="container">
+          <h1 class="section-title">Fale com a gente</h1>
+          <p class="section-sub">
+            Vamos transformar suas ideias em imagens? Nossa equipe está pronta
+            para ouvir seu projeto.
+          </p>
+          <div class="grid-2cols">
+            <div>
+              <div class="info-card">
+                <div class="contact-item">
+                  <div class="icon"><i class="fas fa-envelope"></i></div>
+                  <div class="details">
+                    <h3>Email</h3>
+                    <a href="mailto:befoctor@gmail.com">befoctor@gmail.com</a>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                  <div class="details">
+                    <h3>Telefone / WhatsApp</h3>
+                    <a
+                      href="https://wa.me/5583994090166?text=Olá!%20Estava%20no%20site%20da%20Befoctor%20e%20gostaria%20de%20tirar%20algumas%20dúvidas!"
+                      target="_blank"
+                      >+55 (11) 9996-7111</a
+                    >
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                  <div class="details">
+                    <h3>Whatsapp comercial</h3>
+                    <a
+                      href="https://wa.me/5583994090166?text=Olá!%20Quero%20um%20orçamento!"
+                      target="_blank"
+                      >Converse pelo WhatsApp →</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="map-wrapper">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.052499735831!2d-34.844107900000004!3d-7.1199147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7acdd4968c55a0b%3A0x4a7569804e5e5dc2!2sAtlantis%20Offices%20Design%20Empresarial!5e0!3m2!1spt-BR!2sbr!4v1779156209756!5m2!1spt-BR!2sbr"
+                  allowfullscreen=""
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+            <div class="form-card">
+              <h3>
+                Vamos
+                <span style="color: var(--primary-light)">conversar?</span>
+              </h3>
+              <p>
+                Solicite um orçamento sem compromisso. Respondemos em até 24h.
+              </p>
+              <form id="contactForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Nome *</label>
+                    <input
+                      type="text"
+                      id="nome"
+                      placeholder="Seu nome"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Sobrenome *</label>
+                    <input
+                      type="text"
+                      id="sobrenome"
+                      placeholder="Sobrenome"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Empresa</label>
+                  <input
+                    type="text"
+                    id="empresa"
+                    placeholder="Nome da empresa (opcional)"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>WhatsApp *</label>
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    placeholder="(11) 99999-9999"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>E-mail *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="contato@exemplo.com"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Mensagem *</label>
+                  <textarea
+                    rows="4"
+                    id="mensagem"
+                    placeholder="Conte sobre seu projeto, ideias ou dúvidas..."
+                    required
+                  ></textarea>
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="privacy" required />
+                  <label for="privacy"
+                    >Concordo com a
+                    <a href="#" style="color: var(--primary)"
+                      >Política de Privacidade</a
+                    >
+                    do site.</label
+                  >
+                </div>
+                <button type="submit" class="btn-submit">
+                  <i class="fas fa-paper-plane"></i> Solicitar orçamento
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="logo">BEFOCTOR</div>
+            <p>
+              Produtora Audiovisual & Comercial. Transformamos ideias em imagem
+              com excelência.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Links rápidos</h4>
+            <div class="footer-links">
+              <a href="../index.html">Home</a>
+              <a href="../quem-somos/index.html">Quem somos</a>
+              <a href="../index.html#servicos">Serviços</a>
+              <a href="../index.html#jobs">Jobs</a>
+              <a href="index.html">Fale conosco</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Contato</h4>
+            <div class="footer-links">
+              <a href="mailto:befoctor@gmail.com"
+                ><i class="far fa-envelope"></i> befoctor@gmail.com</a
+              >
+              <a href="https://wa.me/5583994090166" target="_blank"
+                ><i class="fab fa-whatsapp"></i> +55 (11) 9996-7111</a
+              >
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Redes sociais</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/befoctor/" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://wa.me/5583994090166" target="_blank"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            © 2025 Befoctor - Todos os direitos reservados. Desenvolvido por.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toastMsg" class="toast-msg">
+      ✔ Mensagem enviada! Em breve retornamos.
+    </div>
+
+    <script>
+      (function () {
+        const toggle = document.getElementById("mobileToggle");
+        const nav = document.getElementById("navMenu");
+        const overlay = document.getElementById("navOverlay");
+        if (!toggle || !nav || !overlay) return;
+
+        function closeMenu() {
+          toggle.classList.remove("active");
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menu");
+        }
+
+        function openMenu() {
+          toggle.classList.add("active");
+          nav.classList.add("active");
+          overlay.classList.add("active");
+          document.body.classList.add("menu-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Fechar menu");
+        }
+
+        toggle.addEventListener("click", function () {
+          if (nav.classList.contains("active")) closeMenu();
+          else openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 1024) closeMenu();
+        });
+      })();
+
+      // Form handling
+      const form = document.getElementById("contactForm");
+      const toast = document.getElementById("toastMsg");
+      function showMessage(text, isError = false) {
+        toast.textContent =
+          text ||
+          (isError
+            ? "❌ Erro, tente novamente."
+            : "✔ Mensagem enviada! Em breve retornamos.");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 4000);
+      }
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const nome = document.getElementById("nome").value.trim();
+        const sobrenome = document.getElementById("sobrenome").value.trim();
+        const whatsapp = document.getElementById("whatsapp").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+        const privacy = document.getElementById("privacy").checked;
+        if (!nome || !sobrenome || !whatsapp || !email || !mensagem) {
+          showMessage("⚠️ Preencha todos os campos obrigatórios.", true);
+          return;
+        }
+        if (!privacy) {
+          showMessage(
+            "📌 Você precisa concordar com a Política de Privacidade.",
+            true,
+          );
+          return;
+        }
+        if (!email.includes("@") || !email.includes(".")) {
+          showMessage("✉️ E-mail inválido.", true);
+          return;
+        }
+        const submitBtn = form.querySelector(".btn-submit");
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-pulse"></i> Enviando...';
+        submitBtn.disabled = true;
+        try {
+          await new Promise((resolve) => setTimeout(resolve, 800));
+          console.log({
+            nome,
+            sobrenome,
+            empresa: document.getElementById("empresa").value,
+            whatsapp,
+            email,
+            mensagem,
+          });
+          showMessage(
+            "📩 Mensagem enviada! Nossa equipe retorna em breve. Obrigado!",
+          );
+          form.reset();
+        } catch (err) {
+          showMessage(
+            "Erro ao enviar. Tente novamente ou contate via WhatsApp.",
+            true,
+          );
+        } finally {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+
+      // Simple phone mask
+      const whatsField = document.getElementById("whatsapp");
+      if (whatsField) {
+        whatsField.addEventListener("input", (e) => {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length > 11) value = value.slice(0, 11);
+          if (value.length >= 2)
+            value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+          if (value.length > 10 && value.length <= 15) {
+            value = value.replace(/(\(\d{2}\) \d{5})(\d{4})/, "$1-$2");
+          }
+          e.target.value = value;
+        });
+      }
+    </script>
+  </body>
+</html>

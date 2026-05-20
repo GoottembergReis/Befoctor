@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Befoctor — Produtora Audiovisual</title>
+
+    <meta
+      name="description"
+      content="Produções cinematográficas, branding e conteúdo estratégico para empresas que querem autoridade, presença e resultado."
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --primary: #b46ad9;
+        --primary-light: #d28cff;
+        --secondary: #ea9154;
+        --bg-dark: #050816;
+        --bg-card: #0d1324;
+        --bg-card-2: #111827;
+        --text: #ffffff;
+        --text-muted: #9ca3af;
+        --border: rgba(180, 106, 217, 0.2);
+        --gradient: linear-gradient(135deg, #b46ad9, #ea9154);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Sora", sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* =========================================================
+      HEADER
+      ========================================================= */
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        padding: 18px 0;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 32px;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 34px;
+      }
+
+      .nav-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        color: var(--primary);
+      }
+
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        border: 1px solid rgba(180, 106, 217, 0.28);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        place-items: center;
+        flex-shrink: 0;
+        z-index: 1001;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .mobile-toggle span {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .mobile-toggle span:nth-child(1) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(2) {
+        background: #c77ee8;
+      }
+      .mobile-toggle span:nth-child(3) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(4) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(5) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(6) {
+        background: #a855f7;
+      }
+      .mobile-toggle span:nth-child(7) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(8) {
+        background: #9d4edd;
+      }
+      .mobile-toggle span:nth-child(9) {
+        background: #8b5cf6;
+      }
+
+      .mobile-toggle.active {
+        border-color: rgba(180, 106, 217, 0.55);
+        transform: scale(0.96);
+      }
+
+      .mobile-toggle.active span {
+        transform: scale(0.82);
+        opacity: 0.7;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .nav-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* =========================================================
+      HERO
+      ========================================================= */
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 120px;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("img/Mockup\ 4.png");
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.08);
+        filter: blur(2px);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.96)),
+          radial-gradient(
+            circle at top right,
+            rgba(180, 106, 217, 0.35),
+            transparent 40%
+          );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 860px;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        margin-bottom: 28px;
+      }
+
+      .hero-badge img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+      }
+
+      .hero-badge span {
+        color: #d0d0d0;
+        font-size: 0.88rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 1;
+        margin-bottom: 26px;
+        font-weight: 800;
+      }
+
+      .hero h1 span.gradient-text {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero p {
+        max-width: 640px;
+        font-size: 1.08rem;
+        line-height: 1.8;
+        color: #c0c0c0;
+        margin-bottom: 40px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 16px 34px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.35s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.5px;
+      }
+
+      /* BOTÃO PRINCIPAL */
+
+      .btn-primary {
+        background: linear-gradient(135deg, #b46ad9, #ea9154);
+        color: white;
+        border: none;
+
+        box-shadow:
+          0 10px 30px rgba(180, 106, 217, 0.25),
+          0 0 40px rgba(234, 145, 84, 0.15);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.22),
+          transparent
+        );
+
+        transform: translateX(-120%);
+        transition: 0.7s;
+      }
+
+      .btn-primary:hover::before {
+        transform: translateX(120%);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-4px) scale(1.01);
+
+        box-shadow:
+          0 18px 45px rgba(180, 106, 217, 0.35),
+          0 0 60px rgba(234, 145, 84, 0.2);
+      }
+
+      /* BOTÃO SECUNDÁRIO */
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.04);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        color: white;
+
+        backdrop-filter: blur(12px);
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-4px);
+
+        border-color: rgba(180, 106, 217, 0.5);
+
+        background: rgba(255, 255, 255, 0.07);
+
+        box-shadow:
+          0 10px 35px rgba(180, 106, 217, 0.15),
+          0 0 30px rgba(180, 106, 217, 0.08);
+      }
+
+      /* =========================================================
+      SECTION TITLE
+      ========================================================= */
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 70px;
+      }
+
+      .section-title span {
+        color: var(--primary);
+      }
+
+      /* =========================================================
+      SERVICES
+      ========================================================= */
+
+      .services-section {
+        padding: 120px 0;
+        background: #030303;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+      }
+
+      .service-card {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 20, 20, 1),
+          rgba(8, 8, 8, 1)
+        );
+
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: all 0.35s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(255, 122, 0, 0.4);
+
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(255, 122, 0, 0.1);
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover img {
+        transform: scale(1.06);
+      }
+
+      .service-content {
+        padding: 24px;
+      }
+
+      .service-content h3 {
+        font-size: 1rem;
+        margin-bottom: 14px;
+        color: var(--primary);
+      }
+
+      .service-content p {
+        color: #a9a9a9;
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+
+      .btn-service {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-top: 22px;
+
+        padding: 13px 24px;
+
+        border-radius: 12px;
+
+        background: linear-gradient(135deg, #b46ad9, #ea9154);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 0.82rem;
+
+        font-weight: 700;
+
+        transition: all 0.35s ease;
+
+        box-shadow:
+          0 10px 25px rgba(180, 106, 217, 0.18),
+          0 0 30px rgba(234, 145, 84, 0.08);
+      } /* =========================================================
+      JOBS
+      ========================================================= */
+
+      .jobs-section {
+        padding: 120px 0;
+        background: #080808;
+      }
+
+      .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .job-card {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 20, 20, 1),
+          rgba(8, 8, 8, 1)
+        );
+
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: all 0.35s ease;
+      }
+
+      .job-card:hover {
+        transform: translateY(-10px);
+
+        border-color: rgba(255, 122, 0, 0.4);
+
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.5),
+          0 0 40px rgba(255, 122, 0, 0.1);
+      }
+
+      .job-card img {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+      }
+
+      .job-content {
+        padding: 24px;
+      }
+
+      .job-tag {
+        display: inline-flex;
+        background: var(--primary);
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .job-content h3 {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+      }
+
+      .job-content p {
+        color: #a9a9a9;
+        line-height: 1.7;
+        font-size: 0.92rem;
+      }
+
+      /* =========================================================
+      CONTACT
+      ========================================================= */
+
+      .contact-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-image {
+        position: relative;
+      }
+
+      .contact-image img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .contact-form {
+        background: #050505;
+        padding: 70px 50px;
+      }
+
+      .contact-form h2 {
+        font-size: 2.4rem;
+        margin-bottom: 30px;
+      }
+
+      .contact-form h2 span {
+        color: var(--primary);
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 16px;
+        color: white;
+        font-size: 0.95rem;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .btn-submit {
+        width: 100%;
+        background: linear-gradient(135deg, #ff7a00, #ff9a3c);
+        border: none;
+        padding: 16px;
+        border-radius: 12px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+      }
+
+      .info-local {
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+      }
+
+      .info-local h4 {
+        color: var(--primary);
+        margin-bottom: 10px;
+      }
+
+      .info-local p {
+        color: #a9a9a9;
+        line-height: 1.7;
+      }
+
+      /* =========================================================
+      FOOTER
+      ========================================================= */
+
+      .footer {
+        padding: 70px 0 30px;
+        background: #020202;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo img {
+        height: 34px;
+        margin-bottom: 16px;
+      }
+
+      .footer-logo p {
+        color: #999;
+        line-height: 1.7;
+      }
+
+      .footer h4 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .footer ul {
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 12px;
+      }
+
+      .footer ul li a {
+        color: #999;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .footer ul li a:hover {
+        color: var(--primary);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 14px;
+      }
+
+      .social-links a {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+
+      .social-links a:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .social-links img {
+        width: 22px;
+      }
+
+      .copyright {
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: center;
+        color: #777;
+        font-size: 0.8rem;
+      }
+
+      /* =========================================================
+      RESPONSIVO
+      ========================================================= */
+
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .jobs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .mobile-toggle {
+          display: grid;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: min(320px, 85vw);
+          height: 100vh;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          padding: 100px 32px 40px;
+          background: rgba(5, 8, 22, 0.98);
+          backdrop-filter: blur(20px);
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 1000;
+          transition: right 0.35s ease;
+          overflow-y: auto;
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu a {
+          width: 100%;
+          padding: 16px 0;
+          font-size: 14px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          min-height: auto;
+          padding: 150px 0 100px;
+        }
+
+        .hero h1 {
+          line-height: 1.1;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-section {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-image {
+          height: 320px;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      ::selection {
+        background: var(--primary);
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <div class="logo">
+            <a href="index.html"
+              ><img src="img/Group 3.png" alt="Befoctor" />
+            </a>
+          </div>
+
+          <button
+            type="button"
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="nav-menu" id="navMenu">
+            <a href="index.html" class="active">HOME</a>
+            <a href="quem-somos/index.html">QUEM SOMOS</a>
+            <a href="#servicos">SERVIÇOS</a>
+            <a href="#jobs">JOBS</a>
+            <a href="fale-conosco/index.html">FALE CONOSCO</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <button
+      type="button"
+      class="nav-overlay"
+      id="navOverlay"
+      aria-label="Fechar menu"
+    ></button>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <img src="img/logo.png" alt="Ícone" />
+          <span>Creating for you. </span>
+        </div>
+
+        <h1>
+          Produtora
+          <span class="gradient-text">Audiovisual & Comercial</span><br />
+          <br />
+          <p>Produções cinematográficas, branding e conteúdo estratégico .</p>
+        </h1>
+        <div class="hero-buttons">
+          <a
+            href="https://wa.me/558399967111"
+            target="_blank"
+            class="btn-primary"
+          >
+            SOLICITAR ORÇAMENTO
+          </a>
+
+          <a href="#jobs" class="btn-secondary"> VER JOBS </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services-section" id="servicos">
+      <div class="container">
+        <h2 class="section-title">NOSSOS <span>SERVIÇOS</span></h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="img/Prod.jpeg" alt="" />
+
+            <div class="service-content">
+              <h3>PRODUÇÃO AUDIOVISUAL</h3>
+
+              <p>
+                Produções cinematográficas, reels, campanhas, institucionais e
+                conteúdos de alto impacto.
+              </p>
+
+              <a
+                href="servicos/producao-audiovisual/index.html"
+                class="btn-service"
+              >
+                QUERO CONHECER
+              </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <img src="img/mkt.jpg" alt="" />
+
+            <div class="service-content">
+              <h3>MARKETING & ESTRATÉGIA</h3>
+
+              <p>
+                Planejamento de marca, posicionamento digital, tráfego e
+                crescimento estratégico.
+              </p>
+
+              <a
+                href="servicos/marketing-estrategia/index.html"
+                class="btn-service"
+              >
+                QUERO CONHECER
+              </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <img src="img/Design & Branding.jpeg" alt="" />
+
+            <div class="service-content">
+              <h3>DESIGN & BRANDING</h3>
+
+              <p>
+                Identidades visuais premium e materiais que elevam a percepção
+                da sua empresa.
+              </p>
+
+              <a href="servicos/design-branding/index.html" class="btn-service">
+                QUERO CONHECER
+              </a>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <img src="img/social-media.jpeg" alt="" />
+
+            <div class="service-content">
+              <h3>SOCIAL MEDIA</h3>
+
+              <p>
+                Conteúdo estratégico focado em alcance, engajamento e autoridade
+                digital.
+              </p>
+
+              <a href="servicos/social-media/index.html" class="btn-service">
+                QUERO CONHECER
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOBS -->
+
+    <section id="jobs" class="jobs-section">
+      <div class="container">
+        <h2 class="section-title">
+          ALGUNS <span>#JOBS</span> QUE GERARAM
+          <span>#IMPACTO</span>
+        </h2>
+
+        <div class="jobs-grid">
+          <div class="job-card">
+            <img src="img/evento-samsung.png" alt="" />
+
+            <div class="job-content">
+              <span class="job-tag"> Cobertura Estratégica </span>
+
+              <h3>EVENTO EXCLUSIVO SAMSUNG</h3>
+
+              <p>
+                Cobertura premium realizada pela Befoctor para evento exclusivo
+                Samsung.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-card">
+            <img src="img/Dr-Alexandre.jpg" alt="" />
+
+            <div class="job-content">
+              <span class="job-tag"> Posicionamento Médico </span>
+
+              <h3>MAIS AUTORIDADE E CONFIANÇA</h3>
+
+              <p>
+                Produção estratégica fortalecendo a imagem profissional do Dr.
+                Alexandre Lima.
+              </p>
+            </div>
+          </div>
+
+          <div class="job-card">
+            <img src="img/elleve.jpg" alt="" />
+
+            <div class="job-content">
+              <span class="job-tag"> Case Cinematográfico </span>
+
+              <h3>+30 MIL VIEWS ORGÂNICOS</h3>
+
+              <p>
+                A Befoctor transformou uma história real em um case
+                cinematográfico de alto impacto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+
+    <section class="contact-section">
+      <div class="contact-image">
+        <img src="img/fundo-background.png" alt="" />
+      </div>
+
+      <div class="contact-form">
+        <h2>VAMOS TOMAR UM <span>CAFÉ?</span></h2>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="nome" placeholder="Nome" required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="empresa" placeholder="Empresa" />
+          </div>
+
+          <div class="form-group">
+            <input type="tel" id="whatsapp" placeholder="WhatsApp" required />
+          </div>
+
+          <div class="form-group">
+            <textarea
+              id="mensagem"
+              rows="4"
+              placeholder="Envie sua mensagem..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">ENVIAR MENSAGEM</button>
+        </form>
+
+        <div class="info-local">
+          <h4>ONDE NOS ENCONTRAR</h4>
+
+          <p>
+            Av. Pres. Epitácio Pessoa, 2930<br />
+            João Pessoa — PB
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-logo">
+            <img src="img/logo.png" alt="" />
+
+            <p>
+              Produtora audiovisual premium<br />
+              Creating for you
+            </p>
+          </div>
+
+          <div>
+            <h4>FALE CONOSCO</h4>
+
+            <ul>
+              <li>
+                <a href="fale-conosco/index.html"> +55 (83) 9996-7111 </a>
+              </li>
+
+              <li>
+                <a href="fale-conosco/index.html"> befoctor@gmail.com </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>LINKS</h4>
+
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="quem-somos/index.html">Quem Somos</a></li>
+              <li><a href="#servicos">Serviços</a></li>
+              <li><a href="#jobs">Jobs</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>REDES SOCIAIS</h4>
+
+            <div class="social-links">
+              <a href="https://wa.me/558399967111" target="_blank">
+                <img src="img/icone-wts.png" alt="WhatsApp" />
+              </a>
+
+              <a href="https://www.instagram.com/befoctor/" target="_blank">
+                <img src="img/icone-inst.png" alt="Instagram" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © 2025 Befoctor — Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+
+    <script>
+      (function () {
+        const toggle = document.getElementById("mobileToggle");
+        const nav = document.getElementById("navMenu");
+        const overlay = document.getElementById("navOverlay");
+
+        function closeMenu() {
+          toggle.classList.remove("active");
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menu");
+        }
+
+        function openMenu() {
+          toggle.classList.add("active");
+          nav.classList.add("active");
+          overlay.classList.add("active");
+          document.body.classList.add("menu-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Fechar menu");
+        }
+
+        toggle.addEventListener("click", function () {
+          if (nav.classList.contains("active")) closeMenu();
+          else openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 1024) closeMenu();
+        });
+      })();
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nome = document.getElementById("nome").value;
+          const empresa = document.getElementById("empresa").value;
+          const whatsapp = document.getElementById("whatsapp").value;
+          const mensagem = document.getElementById("mensagem").value;
+
+          let texto = `🚀 NOVO LEAD - BEFOCTOR\n\n` + `👤 Nome: ${nome}\n`;
+
+          if (empresa) {
+            texto += `🏢 Empresa: ${empresa}\n`;
+          }
+
+          texto += `📱 WhatsApp: ${whatsapp}\n\n` + `📝 Mensagem:\n${mensagem}`;
+
+          window.open(
+            `https://api.whatsapp.com/send?phone=558399967111&text=${encodeURIComponent(texto)}`,
+            "_blank",
+          );
+
+          this.reset();
+
+          alert("✅ Mensagem enviada! Em breve retornaremos.");
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1083 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quem Somos | Befoctor</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #b46ad9;
+        --primary-light: #d28cff;
+        --secondary: #ea9154;
+        --bg-dark: #050816;
+        --bg-card: #0d1324;
+        --bg-card-2: #111827;
+        --text: #ffffff;
+        --text-muted: #9ca3af;
+        --border: rgba(180, 106, 217, 0.2);
+        --gradient: linear-gradient(135deg, #b46ad9, #ea9154);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #020617;
+        color: var(--text);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Sora", sans-serif;
+      }
+
+      .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ================= HEADER ================= */
+
+      .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        backdrop-filter: blur(18px);
+        background: rgba(2, 6, 23, 0.88);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .header-inner {
+        height: 82px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .logo img {
+        height: 38px;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 34px;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        position: relative;
+        transition: 0.3s;
+      }
+
+      .nav-menu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 0%;
+        height: 2px;
+        background: var(--gradient);
+        transition: 0.3s;
+      }
+
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        color: var(--primary-light);
+      }
+
+      .nav-menu a:hover::after,
+      .nav-menu a.active::after {
+        width: 100%;
+      }
+
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        border: 1px solid rgba(180, 106, 217, 0.28);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        place-items: center;
+        flex-shrink: 0;
+        z-index: 1001;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .mobile-toggle span {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .mobile-toggle span:nth-child(1) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(2) {
+        background: #c77ee8;
+      }
+      .mobile-toggle span:nth-child(3) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(4) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(5) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(6) {
+        background: #a855f7;
+      }
+      .mobile-toggle span:nth-child(7) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(8) {
+        background: #9d4edd;
+      }
+      .mobile-toggle span:nth-child(9) {
+        background: #8b5cf6;
+      }
+
+      .mobile-toggle.active {
+        border-color: rgba(180, 106, 217, 0.55);
+        transform: scale(0.96);
+      }
+
+      .mobile-toggle.active span {
+        transform: scale(0.82);
+        opacity: 0.7;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .nav-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* ================= HERO ================= */
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: url("../img/Mockup 2.png") center/cover no-repeat;
+        transform: scale(1.1);
+        filter: blur(5px);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.96)),
+          radial-gradient(
+            circle at top right,
+            rgba(180, 106, 217, 0.35),
+            transparent 40%
+          );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .badge-icon {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+
+      .hero-badge span {
+        font-size: 13px;
+        font-weight: 600;
+        color: #d9b3ff;
+        letter-spacing: 0.5px;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 1;
+        margin-bottom: 24px;
+        font-weight: 800;
+      }
+
+      .hero h1 span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #d1d5db;
+        max-width: 700px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 18px;
+        margin-top: 38px;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: var(--gradient);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.3s;
+        box-shadow: 0 10px 40px rgba(180, 106, 217, 0.35);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--primary);
+      }
+
+      /* ================= SOBRE ================= */
+
+      .about {
+        padding: 120px 0;
+        background: #050816;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .section-title span {
+        color: var(--primary-light);
+      }
+
+      .section-title h2 {
+        font-size: clamp(2.2rem, 4vw, 4rem);
+        margin-bottom: 18px;
+      }
+
+      .section-title p {
+        max-width: 750px;
+        margin: auto;
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-size: 1rem;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .about-card {
+        background: linear-gradient(
+          180deg,
+          rgba(17, 24, 39, 0.95),
+          rgba(9, 14, 27, 0.98)
+        );
+        border: 1px solid var(--border);
+        padding: 42px 34px;
+        border-radius: 26px;
+        transition: 0.4s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-card::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 220px;
+        height: 220px;
+        background: rgba(180, 106, 217, 0.1);
+        border-radius: 50%;
+      }
+
+      .about-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(180, 106, 217, 0.5);
+      }
+
+      .about-card h3 {
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+      }
+
+      .about-card span {
+        color: var(--primary-light);
+      }
+
+      .about-card p {
+        color: #cbd5e1;
+        line-height: 1.8;
+        font-size: 0.97rem;
+      }
+
+      /* ================= DIFERENCIAIS ================= */
+
+      .stats {
+        padding: 110px 0;
+        background:
+          radial-gradient(
+            circle at center,
+            rgba(180, 106, 217, 0.08),
+            transparent 50%
+          ),
+          #020617;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 24px;
+        padding: 42px 20px;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .stat-box:hover {
+        transform: translateY(-6px);
+        border-color: rgba(180, 106, 217, 0.4);
+      }
+
+      .stat-box h3 {
+        font-size: 3rem;
+        margin-bottom: 12px;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .stat-box p {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+      }
+
+      /* ================= CONTATO ================= */
+
+      .contact-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .map iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 720px;
+        border: 0;
+        filter: grayscale(1) invert(0.92);
+      }
+
+      .contact-form {
+        background: linear-gradient(
+          180deg,
+          rgba(11, 18, 32, 1),
+          rgba(6, 10, 18, 1)
+        );
+        padding: 90px 70px;
+      }
+
+      .contact-form h2 {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
+
+      .contact-form h2 span {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-form p {
+        color: var(--text-muted);
+        margin-bottom: 40px;
+        line-height: 1.8;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        color: white;
+        font-size: 0.95rem;
+        transition: 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .form-group textarea {
+        resize: none;
+      }
+
+      .checkbox {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin: 20px 0 28px;
+      }
+
+      .checkbox label {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        line-height: 1.6;
+      }
+
+      .checkbox a {
+        color: var(--primary-light);
+        text-decoration: none;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 18px;
+        border: none;
+        border-radius: 14px;
+        background: var(--gradient);
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-2px);
+      }
+
+      .info-local {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .info-local h4 {
+        margin-bottom: 10px;
+        color: var(--primary-light);
+      }
+
+      .info-local p {
+        margin: 0;
+        color: #cbd5e1;
+      }
+
+      /* ================= FOOTER ================= */
+
+      .footer {
+        background: #020617;
+        padding: 80px 0 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-bottom: 50px;
+      }
+
+      .footer-logo img {
+        height: 42px;
+        margin-bottom: 20px;
+      }
+
+      .footer-logo p {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+
+      .footer h4 {
+        margin-bottom: 22px;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        color: white;
+      }
+
+      .footer ul {
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 14px;
+      }
+
+      .footer ul li a {
+        text-decoration: none;
+        color: var(--text-muted);
+        transition: 0.3s;
+      }
+
+      .footer ul li a:hover {
+        color: var(--primary-light);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 14px;
+      }
+
+      .social-links a {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+
+      .social-links a:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .social-links img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        font-size: 0.82rem;
+      }
+
+      /* ================= RESPONSIVO ================= */
+
+      @media (max-width: 1100px) {
+        .about-grid,
+        .stats-grid,
+        .footer-inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .contact-section {
+          grid-template-columns: 1fr;
+        }
+
+        .map iframe {
+          min-height: 400px;
+        }
+
+        .mobile-toggle {
+          display: grid;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: min(320px, 85vw);
+          height: 100vh;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          padding: 100px 32px 40px;
+          background: rgba(5, 8, 22, 0.98);
+          backdrop-filter: blur(20px);
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 1000;
+          transition: right 0.35s ease;
+          overflow-y: auto;
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu a {
+          width: 100%;
+          padding: 16px 0;
+          font-size: 14px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-menu a::after {
+          display: none;
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          text-align: center;
+          padding-top: 120px;
+        }
+
+        .hero-buttons {
+          justify-content: center;
+        }
+
+        .about-grid,
+        .stats-grid,
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-form {
+          padding: 60px 30px;
+        }
+
+        .contact-form h2 {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <div class="header-inner">
+          <div class="logo">
+            <a href="../index.html"><img src="../img/logo.png" alt="Befoctor" /></a>
+          </div>
+
+          <button
+            type="button"
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="nav-menu" id="navMenu">
+            <a href="../index.html">HOME</a>
+            <a href="index.html" class="active">QUEM SOMOS</a>
+            <a href="../index.html#servicos">SERVIÇOS</a>
+            <a href="../index.html#jobs">JOBS</a>
+            <a href="../fale-conosco/index.html">FALE CONOSCO</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <button
+      type="button"
+      class="nav-overlay"
+      id="navOverlay"
+      aria-label="Fechar menu"
+    ></button>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <img src="../img/Group 3.png" alt="Ícone" class="badge-icon" />
+            <span>Produtora Audiovisual e Comercial</span>
+          </div>
+
+          <h1>
+            Transformamos marcas em
+            <span>autoridade digital</span>
+          </h1>
+
+          <p>
+            A Befoctor cria experiências audiovisuais que geram impacto,
+            posicionamento e resultado. Cada projeto é pensado para transmitir
+            emoção, fortalecer marcas e transformar audiência em conexão real.
+          </p>
+
+          <div class="hero-buttons">
+            <a
+              href="https://wa.me/558399967111"
+              target="_blank"
+              class="btn-primary"
+            >
+              FALAR COM A BEFOCTOR
+            </a>
+
+            <a href="../index.html#jobs" class="btn-secondary"> VER CASES </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>SOMOS <span>MOVIMENTO</span>, ESTRATÉGIA E IMPACTO</h2>
+
+          <p>
+            Mais do que vídeos bonitos, criamos narrativas que posicionam marcas
+            no mercado. Nossa missão é fazer empresas parecerem tão grandes
+            quanto realmente são.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3><span>01.</span> EMOÇÃO</h3>
+
+            <p>
+              Captamos momentos reais e transformamos cada frame em algo
+              memorável. Criamos conexão visual que aproxima marcas do público.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3><span>02.</span> STORYTELLING</h3>
+
+            <p>
+              Não criamos apenas conteúdo. Construímos histórias estratégicas
+              capazes de gerar autoridade, desejo e posicionamento digital.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3><span>03.</span> RESULTADO</h3>
+
+            <p>
+              Cada produção é feita com foco em impacto, retenção e crescimento
+              real da marca. Visual forte gera percepção forte.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h3>+100</h3>
+            <p>Projetos realizados</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>+3M</h3>
+            <p>Visualizações geradas</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>100%</h3>
+            <p>Produção estratégica</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>24/7</h3>
+            <p>Foco em performance</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact-section">
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.052499735831!2d-34.844107900000004!3d-7.1199147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7acdd4968c55a0b%3A0x4a7569804e5e5dc2!2sAtlantis%20Offices%20Design%20Empresarial!5e0!3m2!1spt-BR!2sbr!4v1779156209756!5m2!1spt-BR!2sbr"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <div class="contact-form">
+        <h2>VAMOS <span>CRIAR?</span></h2>
+
+        <p>
+          Fale com a Befoctor e descubra como elevar o nível da sua marca com
+          produções cinematográficas e posicionamento estratégico.
+        </p>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" name="nome" placeholder="Seu nome" required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="empresa" placeholder="Sua empresa" />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="tel"
+              name="whatsapp"
+              placeholder="Seu WhatsApp"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <textarea
+              name="mensagem"
+              rows="5"
+              placeholder="Conte mais sobre o seu projeto..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="checkbox">
+            <input type="checkbox" required />
+
+            <label>
+              Concordo com a
+              <a href="#">Política de Privacidade</a>
+              do site.
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">ENVIAR MENSAGEM</button>
+        </form>
+
+        <div class="info-local">
+          <h4>ONDE NOS ENCONTRAR</h4>
+
+          <p>
+            Av. Pres. Epitácio Pessoa, 2930 — Tambauzinho<br />
+            João Pessoa — PB, 58042-006
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-logo">
+            <img src="../img/logo.png" alt="Befoctor" />
+
+            <p>
+              Produtora audiovisual focada em impacto, posicionamento e
+              autoridade digital.
+            </p>
+          </div>
+
+          <div>
+            <h4>FALE CONOSCO</h4>
+
+            <ul>
+              <li>
+                <a href="https://wa.me/558399967111" target="_blank">
+                  +55 (83) 99996-7111
+                </a>
+              </li>
+
+              <li>
+                <a href="mailto:befoctor@gmail.com"> befoctor@gmail.com </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>LINKS</h4>
+
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="#">Quem Somos</a></li>
+              <li><a href="../index.html#servicos">Serviços</a></li>
+              <li><a href="../index.html#jobs">Jobs</a></li>
+              <li><a href="../fale-conosco/index.html">Fale Conosco</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>REDES SOCIAIS</h4>
+
+            <div class="social-links">
+              <a href="https://wa.me/558399967111" target="_blank">
+                <img src="../img/icone-wts.png" alt="WhatsApp" />
+              </a>
+
+              <a href="https://www.instagram.com/befoctor/" target="_blank">
+                <img src="../img/icone-inst.png" alt="Instagram" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © 2025 Befoctor — Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      (function () {
+        const toggle = document.getElementById("mobileToggle");
+        const nav = document.getElementById("navMenu");
+        const overlay = document.getElementById("navOverlay");
+
+        function closeMenu() {
+          toggle.classList.remove("active");
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menu");
+        }
+
+        function openMenu() {
+          toggle.classList.add("active");
+          nav.classList.add("active");
+          overlay.classList.add("active");
+          document.body.classList.add("menu-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Fechar menu");
+        }
+
+        toggle.addEventListener("click", function () {
+          if (nav.classList.contains("active")) closeMenu();
+          else openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 1024) closeMenu();
+        });
+      })();
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const nome = document.querySelector('[name="nome"]').value;
+          const empresa = document.querySelector('[name="empresa"]').value;
+          const whatsapp = document.querySelector('[name="whatsapp"]').value;
+          const mensagem = document.querySelector('[name="mensagem"]').value;
+
+          let texto = `🚀 NOVO LEAD - BEFOCTOR\n\n👤 Nome: ${nome}\n`;
+
+          if (empresa) texto += `🏢 Empresa: ${empresa}\n`;
+
+          texto += `📱 WhatsApp: ${whatsapp}\n\n📝 Mensagem:\n${mensagem}`;
+
+          const numero = "558399967111";
+
+          const url = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(texto)}`;
+
+          window.open(url, "_blank");
+
+          this.reset();
+
+          alert("✅ Mensagem enviada com sucesso!");
+        });
+    </script>
+  </body>
+</html>

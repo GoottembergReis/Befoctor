@@ -1,0 +1,85 @@
+﻿@font-face {
+  font-family: "Bebas Neue";
+  font-style: normal;
+  font-weight: 400;
+  font-display: fallback;
+  src: url(s/bebasneue/v16/JTUSjIg69CK48gW7PXoo9Wlhzg.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: fallback;
+  src: url(s/roboto/v51/KFOMCnqEu92Fr1ME7kSn66aGLdTylUAMQXC89YmC2DPNWubEbVmUiA8.ttf)
+    format("truetype");
+}
+.elementor-button,
+.elementor-button:visited,
+.elementor-button-link {
+  background-color: #ff7a00 !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 30px !important;
+}
+#botao-conversao-pc,
+#botao-conversao-mobile {
+  background: #ff7a00 !important;
+  color: #000000 !important;
+  border-radius: 30px !important;
+  border: none !important;
+}
+
+#botao-conversao-pc .elementor-button-text,
+#botao-conversao-mobile .elementor-button-text {
+  color: #000000 !important;
+}
+
+/* ===== FORMULÁRIO LARANJA ===== */
+
+.elementor-form .elementor-field {
+  border: 2px solid #ff7b008c !important;
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+
+/* Placeholder */
+.elementor-form .elementor-field::placeholder {
+  color: #000000 !important;
+}
+
+/* Quando clicar */
+.elementor-form .elementor-field:focus {
+  border-color: #ff7a00 !important;
+  box-shadow: 0 0 8px rgba(255, 122, 0, 0.6) !important;
+  outline: none !important;
+}
+
+/* Checkbox */
+.elementor-form input[type="checkbox"] {
+  accent-color: #ff7a00 !important;
+}
+
+/* Botão */
+.elementor-form button {
+  background: #ff7b00 !important;
+  border: none !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Hover botão */
+.elementor-form button:hover {
+  background: #ff950071 !important;
+}
+.social-icon {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(95%) saturate(1200%)
+    hue-rotate(2deg) brightness(102%) contrast(101%);
+  transition: filter 0.3s ease;
+}
+
+.social-icon:hover {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    brightness(100%) contrast(100%);
+}

@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Social Media · Befoctor</title>
+    <meta
+      name="description"
+      content="Conteúdos de alto impacto, criativos e consistentes, com foco em engajamento e crescimento real."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --primary: #b46ad9;
+        --primary-light: #d28cff;
+        --secondary: #ea9154;
+        --bg-dark: #020617;
+        --bg-card: #0f172a;
+        --text: #ffffff;
+        --text-muted: #94a3b8;
+        --border: rgba(255, 255, 255, 0.08);
+        --gradient: linear-gradient(135deg, #b46ad9, #ea9154);
+        --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
+        --radius-lg: 24px;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-dark);
+        color: var(--text);
+        line-height: 1.5;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.2s;
+      }
+      ul {
+        list-style: none;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .logo {
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+      }
+      .container {
+        max-width: 1280px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(2, 6, 23, 0.82);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+      }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+      .nav-menu a {
+        font-weight: 500;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      .nav-menu a:hover,
+      .nav-menu a.active {
+        color: var(--primary-light);
+      }
+      .mobile-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        padding: 9px;
+        border: 1px solid rgba(180, 106, 217, 0.28);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4px;
+        place-items: center;
+        flex-shrink: 0;
+        z-index: 1001;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .mobile-toggle span {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      .mobile-toggle span:nth-child(1) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(2) {
+        background: #c77ee8;
+      }
+      .mobile-toggle span:nth-child(3) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(4) {
+        background: #d28cff;
+      }
+      .mobile-toggle span:nth-child(5) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(6) {
+        background: #a855f7;
+      }
+      .mobile-toggle span:nth-child(7) {
+        background: #b46ad9;
+      }
+      .mobile-toggle span:nth-child(8) {
+        background: #9d4edd;
+      }
+      .mobile-toggle span:nth-child(9) {
+        background: #8b5cf6;
+      }
+
+      .mobile-toggle.active {
+        border-color: rgba(180, 106, 217, 0.55);
+        transform: scale(0.96);
+      }
+
+      .mobile-toggle.active span {
+        transform: scale(0.82);
+        opacity: 0.7;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .nav-overlay.active {
+        display: block;
+        opacity: 1;
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: 130px;
+        padding-bottom: 60px;
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgba(180, 106, 217, 0.08),
+          transparent 60%
+        );
+      }
+      .hero h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+      }
+      .hero h1 span {
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .hero p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin-bottom: 30px;
+      }
+      .hero-img {
+        margin-top: 40px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .hero-img img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Detalhes do serviço */
+      .service-details {
+        padding: 60px 0;
+      }
+      .details-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      .details-text h2 {
+        font-size: 1.8rem;
+        margin-bottom: 24px;
+      }
+      .details-text p {
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        line-height: 1.7;
+      }
+      .benefits {
+        list-style: none;
+        margin-top: 24px;
+      }
+      .benefits li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        color: var(--text-muted);
+      }
+      .benefits li i {
+        color: var(--primary-light);
+        font-size: 1.2rem;
+        width: 24px;
+      }
+      .details-image {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .details-image img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* CTA */
+      .cta-contact {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #0a0a0a, #030303);
+        text-align: center;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .cta-contact h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+      .cta-contact h2 span {
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .cta-contact p {
+        max-width: 600px;
+        margin: 0 auto 30px;
+        color: var(--text-muted);
+      }
+      .btn-cta {
+        background: var(--gradient);
+        padding: 14px 38px;
+        border-radius: 40px;
+        font-weight: bold;
+        display: inline-block;
+        transition: 0.3s;
+        box-shadow: 0 8px 20px rgba(180, 106, 217, 0.3);
+      }
+      .btn-cta:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(180, 106, 217, 0.45);
+      }
+
+      /* Footer */
+      .footer {
+        background: #030712;
+        border-top: 1px solid var(--border);
+        padding: 56px 0 32px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.2fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+      .footer-col .logo {
+        font-size: 1.8rem;
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+      .footer-col p {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+      .footer-col h4 {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .footer-links a {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .footer-links a:hover {
+        color: var(--primary-light);
+        padding-left: 4px;
+      }
+      .social-icons {
+        display: flex;
+        gap: 18px;
+        margin-top: 10px;
+      }
+      .social-icons a {
+        background: rgba(255, 255, 255, 0.03);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        font-size: 1.3rem;
+        border: 1px solid var(--border);
+      }
+      .social-icons a:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+      .copyright {
+        text-align: center;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 1024px) {
+        .details-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .mobile-toggle {
+          display: grid;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: min(320px, 85vw);
+          height: 100vh;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          padding: 100px 32px 40px;
+          background: rgba(5, 8, 22, 0.98);
+          backdrop-filter: blur(20px);
+          border-left: 1px solid rgba(255, 255, 255, 0.08);
+          z-index: 1000;
+          transition: right 0.35s ease;
+          overflow-y: auto;
+        }
+
+        .nav-menu.active {
+          right: 0;
+        }
+
+        .nav-menu li {
+          width: 100%;
+        }
+
+        .nav-menu li a {
+          width: 100%;
+          padding: 16px 0;
+          font-size: 14px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          display: block;
+        }
+
+        body.menu-open {
+          overflow: hidden;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="navbar">
+          <div class="logo"><a href="../../index.html">BEFOCTOR</a></div>
+          <button
+            type="button"
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../quem-somos/index.html">Quem somos</a></li>
+            <li><a href="../../index.html#servicos">Serviços</a></li>
+            <li><a href="../../index.html#jobs">Jobs</a></li>
+            <li><a href="../../fale-conosco/index.html">Fale conosco</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>SOCIAL <span>MEDIA</span></h1>
+          <p>
+            Conteúdos de alto impacto, criativos e consistentes, com foco em
+            engajamento e crescimento real.
+          </p>
+      </section>
+
+      <section class="service-details">
+        <div class="container">
+          <div class="details-grid">
+            <div class="details-text">
+              <h2>Engajamento que gera resultado</h2>
+              <p>
+                Estar nas redes sociais não basta – é preciso se destacar. A
+                Befoctor cria estratégias de conteúdo que humanizam sua marca,
+                aumentam o alcance e transformam seguidores em clientes.
+              </p>
+              <ul class="benefits">
+                <li>
+                  <i class="fas fa-check-circle"></i> Criação de calendário
+                  editorial
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Produção de posts, stories
+                  e reels
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Gestão de comunidade e
+                  interações
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Relatórios mensais de
+                  desempenho
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Estratégias de growth e
+                  engajamento
+                </li>
+              </ul>
+            </div>
+            <div class="details-image">
+              <img
+                src="../../img/social-media.jpeg"
+                alt="Gestão de redes sociais"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-contact">
+        <div class="container">
+          <h2>Vamos transformar <span>sua ideia em imagem?</span></h2>
+          <p>
+            Conte com a Befoctor para criar conteúdos que geram autoridade,
+            engajamento e resultado.
+          </p>
+          <a href="../../../fale-conosco/index.htmll" class="btn-cta"
+            >FALAR COM A EQUIPE</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="logo">BEFOCTOR</div>
+            <p>
+              Produtora audiovisual premium. Criamos narrativas que posicionam
+              marcas no mercado.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>FALE CONOSCO</h4>
+            <div class="footer-links">
+              <a href="../../fale-conosco/index.html"><i class="fas fa-phone-alt"></i> +55 (83) 9996-7111</a>
+              <a href="mailto:befoctor@gmail.com"><i class="far fa-envelope"></i> befoctor@gmail.com</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>LINKS</h4>
+            <div class="footer-links">
+              <a href="../../index.html">Home</a>
+              <a href="../../quem-somos/index.html">Quem somos</a>
+              <a href="../../index.html#servicos">Serviços</a>
+              <a href="../../index.html#jobs">Jobs</a>
+              <a href="../../fale-conosco/index.html">Fale conosco</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>REDES SOCIAIS</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/befoctor/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+              <a href="https://wa.me/558399967111" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2025 Befoctor — Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Mobile menu toggle
+      (function () {
+        const toggle = document.getElementById("mobileToggle");
+        const nav = document.getElementById("navMenu");
+        const overlay = document.getElementById("navOverlay");
+        if (!toggle || !nav || !overlay) return;
+
+        function closeMenu() {
+          toggle.classList.remove("active");
+          nav.classList.remove("active");
+          overlay.classList.remove("active");
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Abrir menu");
+        }
+
+        function openMenu() {
+          toggle.classList.add("active");
+          nav.classList.add("active");
+          overlay.classList.add("active");
+          document.body.classList.add("menu-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Fechar menu");
+        }
+
+        toggle.addEventListener("click", function () {
+          if (nav.classList.contains("active")) closeMenu();
+          else openMenu();
+        });
+
+        overlay.addEventListener("click", closeMenu);
+
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 1024) closeMenu();
+        });
+      })();
+    </script>
+  </body>
+</html>
