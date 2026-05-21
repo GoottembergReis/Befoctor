@@ -129,14 +129,18 @@
         place-items: center;
         flex-shrink: 0;
         z-index: 1001;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
       }
 
       .mobile-toggle span {
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        transition: transform 0.25s ease, opacity 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
       }
 
       .mobile-toggle span:nth-child(1) {
@@ -614,7 +618,7 @@
         width: 52px;
         height: 52px;
         border-radius: 16px;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgb(240, 236, 236);
         border: 1px solid rgba(255, 255, 255, 0.06);
         display: flex;
         align-items: center;
@@ -732,7 +736,9 @@
       <div class="container">
         <div class="header-inner">
           <div class="logo">
-            <a href="../index.html"><img src="../img/logo.png" alt="Befoctor" /></a>
+            <a href="../index.html"
+              ><img src="../img/logo.png" alt="Befoctor"
+            /></a>
           </div>
 
           <button
